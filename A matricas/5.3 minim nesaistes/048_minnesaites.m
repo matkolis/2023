@@ -11,7 +11,11 @@ Nākamo tuvinājumu atrisinājumam iegūst:
 
 %% 10.piemērs. Minimālās nesaistes metode
 clc, clearvars, format compact
-A = [4,-2,3;-2,6,-1;3,-1,12]; B = [5;3;14];
+A = [4 2 4
+2 16 1
+4 1 8]; B = [1
+-2
+3];
 if det(A) == 0
  disp('Matrica A ir singulārā ')
  disp(' Atbilde: minimālo nesaistes metodi nedrīkst izmantot')
@@ -37,7 +41,7 @@ end
 disp('Koeficientu matrica ir simetriskā un pozitīvi definēta ')
 
 % turpinājums
-k_iter = 0; epsi = 10^(-3);itermax =300;
+k_iter = 0; epsi = 10^(-3);itermax =8;
 n = length(B);
 x_app=zeros(n,1);
 r = A*x_app-B; norm_r = norm(r);
@@ -46,13 +50,14 @@ while norm_r > epsi && k_iter < itermax
  tau = ((A*r)'*r)/norm(A*r)^2;
  x_app = x_app-(tau*r')';r = A*x_app-B; norm_r = norm(r);
 end
-k_iter,tau, x_app, norm_r
+norm(x_app)
+%k_iter,tau, x_app, norm_r
 % Vienādojumu sistēmas precīzs atrisinājums
-x_sol = linsolve(A,B)
+%x_sol = linsolve(A,B)
 % turpinājums
-disp('Atbilde:')
-fprintf(' iter. skaits = %.f, nesaistes norma = %.8f\n', k_iter,norm_r)
-disp([' x_tuvinājumi : {' num2str(x_app(:)') '}'])
+%disp('Atbilde:')
+%fprintf(' iter. skaits = %.f, nesaistes norma = %.8f\n', k_iter,norm_r)
+%disp([' x_tuvinājumi : {' num2str(x_app(:)') '}'])
 
 
 %% ārēja funkcija( 10.piemērs ) Minimālās nesaistes metode
