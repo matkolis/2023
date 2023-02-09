@@ -1,12 +1,12 @@
 %% 1.uzd Jakobi
 clc, clearvars, format compact, format short 
-A=[5 3 1 1
-    4 7 3 2
-    -1 4 9 3
-    1 5 -3 6]; B=[5
-    2
-    1
-    9];
+A=[7 3 2 6
+2 5 -1 2
+3 1 8 2
+4 -2 1 9]; B=[3
+-1
+2
+5];
 if det(A) == 0
     disp('Matrica A ir singulârâ ')
     disp(' Atbilde:  Jakobi metodi nedrîkst izmantot'), return
@@ -16,7 +16,7 @@ fun_prob3(A) % pârbaude: vai Jakobi metode konverìç?
 
 % turpinâjums 
 n = length(B);
-x_app = zeros(n ,1); itermax = 9; k = 1; 
+x_app = zeros(n ,1); itermax = 7; k = 1; 
 errnorm =1; prnorm =zeros(1,2);
 for iter = 1:itermax
  k = k+1;
@@ -32,8 +32,14 @@ for iter = 1:itermax
  errnorm =norm((x_app(:,k)-x_app(:,k-1)),2);
  prnorm(iter,:) =[iter,errnorm];
 end
-disp('x4 9. iterācijā')
-x_app(4,10)
+x_7 = zeros(n ,1);
+for i = 1:n
+   x_7(i)= x_app(i, 8);
+end
+%norm(B-A*x_app(:8))
+norm(B-A*x_7)
+%disp('x4 9. iterācijā')
+%x_app(4,10)
 % x_app
 %{
 disp('Iterācijas Kļūda')
@@ -41,8 +47,8 @@ disp(prnorm)
 x_approx = x_app(:,k);
 %}
 
-X = linsolve(A,B);
-X(4)
+%X = linsolve(A,B);
+%X(4)
 %sol_X12_norm = norm(X-x_app(:,13))
 
 %X = linsolve(A,B)
