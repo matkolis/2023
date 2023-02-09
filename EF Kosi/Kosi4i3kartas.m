@@ -4,16 +4,16 @@ clc, clearvars, format compact
 dy_dx = @(x,y) [
     y(2);
     y(3);
-    -(3+acot(x)).*y(3)-sqrt(1+x+x.^3).*y(2)-log(2+x.^2).*y(1)+sin(x)
+    -sqrt(4+x.^3).*y(3)-log(1+x.^2).*y(2)-(2+x.^2).^(3/2).*y(1)+sqrt(x)
     ];                  
 %--------------------------------------------
 
 % Define value at y(lower_lim)
-y0 = [4; 5; 8];                     
+y0 = [4; 2; 5];                     
 
 % Define interval for x
 lower_lim = 1;
-upper_lim = 7;
+upper_lim = 4;
 %delta = 0.1;    % might be usefull later
 
 x_int = [lower_lim upper_lim];
@@ -22,14 +22,14 @@ x_int = [lower_lim upper_lim];
 sol = ode45(dy_dx,x_int,y0);
 
 %Define point of interest
-pnt = 3.72;
+pnt = 3.24;
 
 % Value of y at point of interest 
 y_pnt = deval(sol,pnt);
 
-fprintf('Answer: y(%.2f) = %.4f \n ',pnt ,y_pnt(1))
+%fprintf('Answer: y(%.2f) = %.4f \n ',pnt ,y_pnt(1))
 fprintf("Answer: y'(%.2f) = %.4f \n ",pnt ,y_pnt(2))
-fprintf("Answer: y''(%.2f) = %.4f \n ",pnt ,y_pnt(3))
+%fprintf("Answer: y''(%.2f) = %.4f \n ",pnt ,y_pnt(3))
 
 %{
  Graph if needed
