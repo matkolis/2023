@@ -1,7 +1,7 @@
 %% 3.piemers. Ņūtona metode
 % 𝑥^3 − 2𝑥 − 5 = 0 sakni ar precizitāti 0.00001
 clc, clearvars,format compact, close all, format longG
-f = @(x)sin(x.^2+1)+x.^2+2.*x-5;
+f = @(x)x.^3+2.*x-1+5.*acot(x);
 %{
 x_pr = -10:0.01:10; plot(x_pr,f(x_pr),'r','LineWidth',3)
 grid on, title('Funkcijas f(x) grafiks intervālā [-10,10]') 
@@ -14,8 +14,8 @@ grid on, title('Funkcijas f(x) grafiks intervālā [-3,3]')
 %}
 
 % turpinājums
-x_app = 2.1; % saknes tuvinājumi
-iter = 3; % maksimālais iterāciju skaits
+x_app = 2; % saknes tuvinājumi
+iter = 2; % maksimālais iterāciju skaits
 syms x, fpr(x) = diff(f(x),x);
 xn = x_app; M = zeros(iter,2);
 for i = 1:iter
