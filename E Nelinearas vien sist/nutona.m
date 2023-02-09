@@ -8,8 +8,8 @@
 clc, clearvars,format compact, close all,format longG
 f1 = @(x1,x2)x1.^5+x2.^5+10;
 f2 = @(x1,x2)x1.^2./4+x2.^2./6-1;
-fimplicit(f1,[0 1.5 0 1.5],'r','LineWidth',3), hold on
-fimplicit(f2,[0 1.5 0 1.5],'b','LineWidth',3), hold off
+fimplicit(f1,[0 1.5 -2.2 -0.5],'r','LineWidth',3), hold on
+fimplicit(f2,[0 1.5 -2.2 -0.5],'b','LineWidth',3), hold off
 grid on,xlabel('x1'),ylabel('x2')
 legend, title('Divu līniju krustojums')
 
@@ -19,7 +19,7 @@ legend, title('Divu līniju krustojums')
 % turpinājums
 syms x1 x2
 xapp = [1.5 -1.5]; xapp_pr = xapp; xpr = [x1 x2];
-fun = [x1^3+x2^3-1,sin(x1+0.1)-x2-0.3]; % funkcijas
+fun = [f1(x1, x2),f2(x1, x2)]; % funkcijas
 % funkcijas atvasinājumi
 fun_pr = [diff(fun(1),xpr(1)) diff(fun(1),xpr(2))
  diff(fun(2),xpr(1)) diff(fun(2),xpr(2))]
@@ -29,7 +29,7 @@ fun_pr = [diff(fun(1),xpr(1)) diff(fun(1),xpr(2))
 epsi = 10^(-5); k = 0; % iterāciju skaits
 maxiter = 2
 sol_norm = 1; % normas sākuma vērtība (jābūt lielākai par epsi)
-while sol_norm > epsi and k < maxiter
+while sol_norm > epsi && k < maxiter
  for i = 1:2
  B(i,1) = -double(subs(fun(i),xpr,xapp));
  for j = 1:2
@@ -48,7 +48,7 @@ disp(M_pr)
 
 % turpinājums
 fprintf('Atbilde. Ņūtona metode: sistēmai ir viena sakne \n' )
-fprintf(' x1 = %.5f, x2 = %.5f ',M_pr(k,1:2))
-fprintf('ar precizitāti 10^(-5)\n'), format
+fprintf(' x1 = %.4f, x2 = %.4f ',M_pr(k,1:2))
+fprintf('ar precizitāti 10^(-4)\n'), format
 
 
