@@ -3,16 +3,16 @@ clc, clearvars, format compact
 %--------------------------------------------
 dy_dx = @(x,y) [
     y(2);
-    -(3+cos(1+x.^2)).*y(2)-log(1+x+x.^2).*y(1)+(1-x)./(1+x.^2)
+    -x.*log(1+x).*y(2)-nthroot(1+x.^3, 3).*y(1)+x.^2+1
     ];                  
 %--------------------------------------------
 
 % Define value at y(lower_lim)
-y0 = [7; 11];                     
+y0 = [2; 3];                     
 
 % Define interval for x
-lower_lim = 2;
-upper_lim = 5;
+lower_lim = 1;
+upper_lim = 4;
 %delta = 0.1;    % might be usefull later
 
 x_int = [lower_lim upper_lim];
@@ -21,13 +21,13 @@ x_int = [lower_lim upper_lim];
 sol = ode45(dy_dx,x_int,y0);
 
 %Define point of interest
-pnt = 4.15;
+pnt = 2.5;
 
 % Value of y at point of interest 
 y_pnt = deval(sol,pnt);
 
-%fprintf('Answer: y(%.2f) = %.4f \n ',pnt ,y_pnt(1))
-fprintf("Answer: y'(%.2f) = %.4f \n ",pnt ,y_pnt(2))
+fprintf('Answer: y(%.2f) = %.4f \n ',pnt ,y_pnt(1))
+%fprintf("Answer: y'(%.2f) = %.4f \n ",pnt ,y_pnt(2))
 %fprintf("Answer: y''(%.2f) = %.4f \n ",pnt ,y_pnt(3))
 
 %{
