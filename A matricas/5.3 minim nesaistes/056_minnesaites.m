@@ -11,11 +11,11 @@ Nākamo tuvinājumu atrisinājumam iegūst:
 
 %% 10.piemērs. Minimālās nesaistes metode
 clc, clearvars, format compact
-A = [4 2 4
-2 16 1
-4 1 8]; B = [1
--2
-3];
+A = [9 10 12
+10 81 11
+12 11 90]; B = [1
+5
+9];
 if det(A) == 0
  disp('Matrica A ir singulārā ')
  disp(' Atbilde: minimālo nesaistes metodi nedrīkst izmantot')
@@ -41,7 +41,7 @@ end
 disp('Koeficientu matrica ir simetriskā un pozitīvi definēta ')
 
 % turpinājums
-k_iter = 0; epsi = 10^(-3);itermax =8;
+k_iter = 0; epsi = 10^(-3);itermax =12;
 n = length(B);
 x_app=zeros(n,1);
 r = A*x_app-B; norm_r = norm(r);
@@ -50,7 +50,8 @@ while norm_r > epsi && k_iter < itermax
  tau = ((A*r)'*r)/norm(A*r)^2;
  x_app = x_app-(tau*r')';r = A*x_app-B; norm_r = norm(r);
 end
-norm(x_app)
+tau
+%norm(x_app)
 %k_iter,tau, x_app, norm_r
 % Vienādojumu sistēmas precīzs atrisinājums
 %x_sol = linsolve(A,B)
