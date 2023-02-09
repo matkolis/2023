@@ -1,8 +1,8 @@
 %% 8.piemērs. Interpolēt integrāli ar 4.kārtas Ņūtona
 % interpolācijas polinomu ar mezgliem punktos
 clc, clearvars,format compact, close all
-xnodes = 0.2:0.2:1.4;
-syms t, y = @(t)log(1+3.*nthroot(t, 3)+cos(t));
+xnodes = 2.4:0.2:3.2;
+syms t, y = @(t)log(t+5)+exp(sqrt(t));
 m = length(xnodes);
 for i = 1:m
  ynodes(i) = integral(y,0,xnodes(i));
@@ -28,7 +28,7 @@ coefpol = sym2poly(polyn) % polinoma koeficienti
 fun_prob6(coefpol) % polinoma drukāšana
 
 % turpinājums
-pol_ver = double(polyn(0.87))
+pol_ver = double(polyn(2.96))
 fprintf('Polinoma vērtība punktā(0.87) = %.4f \n',pol_ver)
 
 % ārēja funkcija (6.piemērs). Skaitliskā integrēšana
