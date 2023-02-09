@@ -2,13 +2,13 @@
 %% 2.jaut. Vienkāršā iterāciju metode
 % Pieņemt optimālo parametra tau vērtību
 clc, clearvars, format compact
-A =[8 7 9 15
-7 16 16 2
-9 16 256 10
-15 2 10 48]; B =[3
+A =[4 2 8 6
+2 9 8 6
+8 8 81 9
+6 6 9 27]; B =[2
 4
-6
-8];
+0
+-3];
 if det(A) == 0
  disp('Matrica A ir singulārā ')
  disp(' Atbilde: vienkāršo iterāciju metodi nedrīkst izmantot')
@@ -32,10 +32,10 @@ disp('Koeficientu matrica ir simetriskā un pozitīvi definēta ')
 
 % turpinājums
 lennB = length(B);
-x_app = zeros(lennB,1); x_app = [1
+x_app = zeros(lennB,1); x_app = [0
 0
--1
-3]; epsi = 10^(-3); itermax = 19;
+0
+0]; epsi = 10^(-3); itermax = 11;
 
 lambda = eig(A); tau_opt = 2/(max(lambda)+min(lambda)); % 𝜏𝑜 =2/(𝜆𝑚𝑎𝑥 + 𝜆𝑚𝑖n)
 k_iter = 0; resid = B-A*x_app;
@@ -44,11 +44,12 @@ while norm(resid) > epsi && k_iter < itermax
  resid = B-A*x_app;
  k_iter = k_iter +1;
 end
+norm(resid)
 %tau_opt, k_iter, x_app % Ctrl+Enter
-x_sol=linsolve(A,B) ;
+%x_sol=linsolve(A,B) ;
 %19. tātad saglabāts jau
 %haha nekā atšķiras gan
-norm(x_sol)-norm(x_app)
+%norm(x_sol)-norm(x_app)
 %X_app19_norm1 =norm(x_sol-x_app)
 %X_app19_norm2 =norm(x_sol)-norm(x_app)
 %{
