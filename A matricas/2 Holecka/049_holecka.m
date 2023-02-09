@@ -1,9 +1,9 @@
 %% 14.piemērs.Hoļecka metode
 clc, clearvars, format compact
-A = [7 2 3 -1
-    2 5 1 5
-    3 1 9 3
-    -1 5 3 16];
+A = [6 1 3 -1
+1 9 4 2
+3 4 12 3
+-1 2 3 18];
 
 
 check = isequal(A,A'); % pārbaude: vai matrica ir simetriskā
@@ -30,7 +30,7 @@ L = chol(A,'lower')
 % turpinājums
 disp('Atbilde:')
 L
-L(2, 2)
+L(4, 1)
 %fprintf(' x1 = %.0f; x2 = %.0f; x3 = %.0f\n',X)
 
 
