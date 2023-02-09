@@ -1,6 +1,9 @@
 %% 14.piemērs.Hoļecka metode
 clc, clearvars, format compact
-A = [1,2,6;2,7,3;6,3,64]; B = [7;2;13];
+A = [7 2 3 -1
+    2 5 1 5
+    3 1 9 3
+    -1 5 3 16];
 
 
 check = isequal(A,A'); % pārbaude: vai matrica ir simetriskā
@@ -20,13 +23,15 @@ disp(' Koeficientu matrica ir simetriskā un pozitīvi definēta ')
 
 % turpinājums
 L = chol(A,'lower')
-Amat = L*L' % matrica A
-Y = L\B % vai Y=linsolve(L,B)
-X = L'\Y % vai X=linsolve(L’,Y)
+%Amat = L*L' % matrica A
+%Y = L\B % vai Y=linsolve(L,B)
+%X = L'\Y % vai X=linsolve(L%,Y)
 % Ctrl+Enter
 % turpinājums
 disp('Atbilde:')
-fprintf(' x1 = %.0f; x2 = %.0f; x3 = %.0f\n',X)
+L
+L(2, 2)
+%fprintf(' x1 = %.0f; x2 = %.0f; x3 = %.0f\n',X)
 
 
 % ārēja funkcija ( 14.piemērs ). Holecka metode
