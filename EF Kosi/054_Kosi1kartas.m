@@ -2,16 +2,16 @@
 clc, clearvars, format compact 
 %--------------------------------------------
 dy_dx = @(x,y) [
-    (-(nthroot(x, 3)./(x+1)+sin(3.*x)).*y(1)+(x.^2+1)./(x.^3+4))./(exp(sqrt(x))+x.^2+2)
+    ((-(x.^2+sqrt(x+4))).*y(1)+acot((x+2)./(x.^2+6)))./nthroot(x+3, 3)
     ];                  
 %--------------------------------------------
 
 % Define value at y(lower_lim)
-y0 = [2];                     
+y0 = [1];                     
 
 % Define interval for x
-lower_lim = 0;
-upper_lim = 7;
+lower_lim = 4;
+upper_lim = 9;
 %delta = 0.1;    % might be usefull later
 
 x_int = [lower_lim upper_lim];
@@ -20,7 +20,7 @@ x_int = [lower_lim upper_lim];
 sol = ode45(dy_dx,x_int,y0);
 
 %Define point of interest
-pnt = 2.38;
+pnt = 6.94;
 
 % Value of y at point of interest 
 y_pnt = deval(sol,pnt);
