@@ -1,6 +1,6 @@
 %% 8.piemērs. Sekantu metode( Atrast vismazāko pozitīvo skaitli )
 %  minimālo pozitīvo skaitli a , kas apmierina vienādojumu
-% ∫ √(2 + 𝑎𝑥^4) sin(𝑥^2) 𝑑𝑥 = 5
+% ∫ √(2 +a*x𝑥^4) * sin(x^2) = 5
 % (precizitāte 𝜀 = 0.000001 ).
 
 clc, clearvars,format compact, close all, format longG
